@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="48f1e7db66094c2b9c05f32bca7d951b" Name="Diagram1">
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="9.25" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Client" Width="1.5" PointX="7.625" PointY="4.5" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Gender" Width="1.5" PointX="5.375" PointY="5.125" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Order" Width="1.5" PointX="12.875" PointY="4.875" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.OrderProd" Width="1.5" PointX="15.125" PointY="5" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.PostStaff" Width="1.5" PointX="8.375" PointY="1.25" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Product" Width="1.5" PointX="12.875" PointY="0.75" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.ProductType" Width="1.5" PointX="10.625" PointY="1.375" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Role" Width="1.5" PointX="3.125" PointY="2.25" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Staff" Width="1.5" PointX="10.625" PointY="4.375" />
-        <EntityTypeShape EntityType="BakerySaninCheprasovModel.UserAccount" Width="1.5" PointX="5.375" PointY="1.75" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Client" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Gender" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Order" Width="1.5" PointX="8.25" PointY="4.875" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.OrderProd" Width="1.5" PointX="10.5" PointY="5" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.PostStaff" Width="1.5" PointX="3.75" PointY="1.25" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Product" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.ProductType" Width="1.5" PointX="6" PointY="1.375" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Role" Width="1.5" PointX="1.5" PointY="9.25" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.Staff" Width="1.5" PointX="6" PointY="4.375" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="9.125" />
+        <EntityTypeShape EntityType="BakerySaninCheprasovModel.UserAccount" Width="1.5" PointX="0.75" PointY="1.75" />
         <AssociationConnector Association="BakerySaninCheprasovModel.FK_Client_Gender" />
         <AssociationConnector Association="BakerySaninCheprasovModel.FK_Client_UserAccount" />
         <AssociationConnector Association="BakerySaninCheprasovModel.FK_Order_Client" />
@@ -27,7 +27,7 @@
         <AssociationConnector Association="BakerySaninCheprasovModel.FK_Product_ProductType" />
         <AssociationConnector Association="BakerySaninCheprasovModel.FK_UserAccount_Role" />
         <AssociationConnector Association="BakerySaninCheprasovModel.FK_Staff_UserAccount" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

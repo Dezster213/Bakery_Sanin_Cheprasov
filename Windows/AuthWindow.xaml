@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AuthWindow" Height="500" Width="400" Background="Purple" WindowStartupLocation="CenterScreen">
     <Grid x:Name="authbtton">
-        <TextBox x:Name="Tblogin" HorizontalAlignment="Left" Height="30" Margin="45,200,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="309" TextChanged="textBox_TextChanged"/>
+        <TextBox x:Name="Tblogin" HorizontalAlignment="Left" Height="30" Margin="45,200,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="309"/>
         <TextBox x:Name="PbPassword" HorizontalAlignment="Left" Height="30" Margin="45,250,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="309"/>
         <Button x:Name="Authbutton" Content="Войти" HorizontalAlignment="Left" 
                 Margin="45,390,0,0" VerticalAlignment="Top"  Width="150" Height="50" Foreground="White" 

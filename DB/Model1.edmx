@@ -101,11 +101,11 @@
           <Key>
             <PropertyRef Name="IDUser" />
           </Key>
-          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdRole" Type="int" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Client_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
@@ -228,7 +228,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserAccount_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
@@ -362,7 +362,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="sysdiagrams" EntityType="BakerySaninCheprasovModel.sysdiagrams" />
           <EntitySet Name="Client" EntityType="BakerySaninCheprasovModel.Client" />
           <EntitySet Name="Gender" EntityType="BakerySaninCheprasovModel.Gender" />
           <EntitySet Name="Order" EntityType="BakerySaninCheprasovModel.Order" />
@@ -372,6 +371,7 @@
           <EntitySet Name="ProductType" EntityType="BakerySaninCheprasovModel.ProductType" />
           <EntitySet Name="Role" EntityType="BakerySaninCheprasovModel.Role" />
           <EntitySet Name="Staff" EntityType="BakerySaninCheprasovModel.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="BakerySaninCheprasovModel.sysdiagrams" />
           <EntitySet Name="UserAccount" EntityType="BakerySaninCheprasovModel.UserAccount" />
           <AssociationSet Name="FK_Client_Gender" Association="BakerySaninCheprasovModel.FK_Client_Gender">
             <End Role="Gender" EntitySet="Gender" />
@@ -429,16 +429,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="ID" />
@@ -540,15 +530,25 @@
           <NavigationProperty Name="PostStaff" Relationship="BakerySaninCheprasovModel.FK_Staff_PostStaff" FromRole="Staff" ToRole="PostStaff" />
           <NavigationProperty Name="UserAccount" Relationship="BakerySaninCheprasovModel.FK_Staff_UserAccount" FromRole="Staff" ToRole="UserAccount" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="IDUser" />
           </Key>
-          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdRole" Type="Int32" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="BakerySaninCheprasovModel.FK_Client_UserAccount" FromRole="UserAccount" ToRole="Client" />
           <NavigationProperty Name="Role" Relationship="BakerySaninCheprasovModel.FK_UserAccount_Role" FromRole="UserAccount" ToRole="Role" />
           <NavigationProperty Name="Staff" Relationship="BakerySaninCheprasovModel.FK_Staff_UserAccount" FromRole="UserAccount" ToRole="Staff" />
@@ -662,7 +662,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserAccount_Role">
-          <End Type="BakerySaninCheprasovModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="BakerySaninCheprasovModel.Role" Role="Role" Multiplicity="1" />
           <End Type="BakerySaninCheprasovModel.UserAccount" Role="UserAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
@@ -715,17 +715,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище BakerySaninCheprasovModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище BakerySaninCheprasovModel.sp_upgraddiagrams" />
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BakerySaninCheprasovModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="BakerySaninCheprasovModel.Client">
               <MappingFragment StoreEntitySet="Client">
@@ -817,6 +806,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BakerySaninCheprasovModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserAccount">
             <EntityTypeMapping TypeName="BakerySaninCheprasovModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
@@ -828,7 +828,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
