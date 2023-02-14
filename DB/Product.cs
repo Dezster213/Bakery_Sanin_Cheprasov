@@ -23,9 +23,9 @@ namespace Bakery_Sanin_Cheprasov.DB
         public int ID { get; set; }
         public string Title { get; set; }
         public decimal Cost { get; set; }
-        public Nullable<double> Discount { get; set; }
-        public int PostID { get; set; }
+        public string Discription { get; set; }
         public int IDProdType { get; set; }
+        public byte[] ProductImage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProd> OrderProd { get; set; }

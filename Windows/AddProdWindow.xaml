@@ -1,0 +1,106 @@
+﻿<Window x:Class="Bakery_Sanin_Cheprasov.AddProdWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bakery_Sanin_Cheprasov"
+        mc:Ignorable="d"
+        Title="AddProdWindow" Height="900" Width="450">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Res/Osnova.png"/>
+        </Grid.Background>
+        <StackPanel Orientation="Vertical" 
+                    Margin="40 0 40 0 " >
+
+
+            <TextBlock Text="Добавление товара" 
+                       FontSize="40" 
+                       TextAlignment="Center" 
+                       Foreground="Black"/>
+
+            <Border BorderBrush="Gray"
+                    BorderThickness="1"
+                    Width="200"
+                    Height="200">
+                <Image x:Name="ImgProduct" Source="/Res/NN.png"/>
+            </Border>
+
+            <Button x:Name="BtnChooseImage" 
+                    Content="Выбрать фото"
+                    Width="200"
+                    Height="40"
+                    Margin="5"
+                    Click="BtnChooseImage_Click"/>
+
+            <TextBlock Height="50"
+                       Text="Введите название товара"
+                       FontSize="20"
+                       TextAlignment="Left"
+                       Foreground="Gray"
+                       Margin="0 20 0 0 "/>
+
+            <TextBox x:Name="TbNameProduct"
+                     Height="50"
+                     FontSize="20"
+                     TextAlignment="Left"
+                     Foreground="Black"/>
+            <TextBlock
+                Height="50"
+                FontSize="20"
+                TextAlignment="Left"
+                Foreground="Gray"
+                Text="Введите скидку товара"
+                Margin="0 20 0 0"
+                />
+
+            <TextBox
+                x:Name="TbDisc"
+                Height="50"
+                FontSize="20"
+                Foreground="Black"/>
+            <TextBlock
+                Height="50"
+                FontSize="20"
+                TextAlignment="Left"
+                Foreground="Gray"
+                Text="Введите Цену товара"
+                Margin="0 20 0 0"
+                />
+
+            <TextBox
+                x:Name="TbCost"
+                Height="50"
+                FontSize="20"
+                Foreground="Black"/>
+
+            <TextBlock Height="50"
+                       Text="Выберите тип товара"
+                       FontSize="20"
+                       TextAlignment="Left"
+                       Foreground="Gray"
+                       Margin="0 20 0 0 "/>
+          
+            <ComboBox x:Name="CMBTypeProduct"
+                     Height="50"
+                     FontSize="20"                     
+                     Foreground="Black"/>
+
+
+            <Button x:Name="BtnAdd"
+                    Height="50"
+                    FontSize="20"
+                    Width="200"
+                    Margin="0 40 0 0 " 
+                    HorizontalAlignment="Center"
+                    Content="Добавить"
+                    Click="BtnAdd_Click">
+
+            </Button>
+
+
+
+        </StackPanel>
+
+    </Grid>
+</Window>

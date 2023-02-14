@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Bakery_Sanin_Cheprasov.ClassHelper;
+using Bakery_Sanin_Cheprasov.DB;
+using Bakery_Sanin_Cheprasov.Windows;
+using static Bakery_Sanin_Cheprasov.ClassHelper.EFClass;
 
 namespace Bakery_Sanin_Cheprasov
 {
@@ -22,6 +26,12 @@ namespace Bakery_Sanin_Cheprasov
         public ListOfProductsWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddProdWindow addProdWindow = new AddProdWindow();
+            addProdWindow.ShowDialog();
         }
     }
 }

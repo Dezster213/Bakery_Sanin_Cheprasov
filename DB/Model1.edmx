@@ -53,12 +53,12 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Cost" Type="money" Nullable="false" />
-          <Property Name="Discount" Type="float" />
-          <Property Name="PostID" Type="int" Nullable="false" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="250" />
           <Property Name="IDProdType" Type="int" Nullable="false" />
+          <Property Name="ProductImage" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -488,12 +488,12 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Discount" Type="Double" />
-          <Property Name="PostID" Type="Int32" Nullable="false" />
+          <Property Name="Discription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="IDProdType" Type="Int32" Nullable="false" />
+          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="OrderProd" Relationship="BakerySaninCheprasovModel.FK_OrderProd_Product" FromRole="Product" ToRole="OrderProd" />
           <NavigationProperty Name="ProductType" Relationship="BakerySaninCheprasovModel.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
         </EntityType>
@@ -767,9 +767,9 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="BakerySaninCheprasovModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
                 <ScalarProperty Name="IDProdType" ColumnName="IDProdType" />
-                <ScalarProperty Name="PostID" ColumnName="PostID" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

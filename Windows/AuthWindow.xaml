@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="AuthWindow" Height="500" Width="400" Background="Purple" WindowStartupLocation="CenterScreen">
     <Grid x:Name="authbtton">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Res/Osnova.png"/>
+        </Grid.Background>
         <TextBox x:Name="Tblogin" HorizontalAlignment="Left" Height="30" Margin="45,200,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="309"/>
         <TextBox x:Name="PbPassword" HorizontalAlignment="Left" Height="30" Margin="45,250,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="309"/>
         <Button x:Name="Authbutton" Content="Войти" HorizontalAlignment="Left" 
