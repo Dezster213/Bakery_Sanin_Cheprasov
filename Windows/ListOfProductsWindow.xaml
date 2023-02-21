@@ -29,45 +29,54 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   Background="{x:Null}">
 
-            <!--<ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Название" Width="150" DisplayMemberBinding="{Binding Title}"/>
-                    <GridViewColumn Header="Тип" Width="150" DisplayMemberBinding="{Binding IdProdType}"/>
-                    <GridViewColumn Header="Количество" Width="150" DisplayMemberBinding="{Binding Quantity}"/>
-                </GridView>
-            </ListView.View>-->
+            
 
             <ListView.ItemsPanel
                 >
-                <ItemsPanelTemplate>
+                
+                <ItemsPanelTemplate
+                    >
                     <WrapPanel/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
+            <ListView.ItemTemplate
+                >
+                <DataTemplate
+                    >
                     <Border Width="150"
-                            Height="200"
+                            Height="250"
                             BorderThickness="1"
                             BorderBrush="Blue"
                             Margin="8"
-                            Background="White">
-                  
+                            >
                         <StackPanel>
-                            <Image Height="100" 
+                            <Image Height="150" 
                                    Width="120"
-                                   Margin="0 8 0 0"
-                                   Source="/Res/pizza.png"/>
+                                   Margin="0 8 0 0">
+                                <Image.Source>
+                                    <Binding Path="Image">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/Res/pizza.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
 
-                            <TextBlock Text="{Binding Title}" 
-                                       FontSize="14"
-                                       Margin="10 0 0 0"/>
-                            <TextBlock Text="{Binding Cost}"
+                            </Image>
+
+                            <TextBlock Text="{Binding ProductName}" 
                                        FontSize="14"
                                        Margin="10 0 0 0"/>
                             <TextBlock Text="{Binding ProductType.TypeName}" 
                                        FontSize="14"
                                        Margin="10 0 0 0"/>
+
+                            <Button x:Name="BtnEditProduct" 
+                                    Content="Редактировать"
+                                    Height="30"
+                                    Width="100"
+                                    Margin="10"
+                                    Click="BtnEditProduct_Click"/>
                         </StackPanel>
                     </Border>
 
@@ -75,6 +84,15 @@
             </ListView.ItemTemplate>
 
         </ListView>
-        <Button Grid.Row="3" HorizontalAlignment="Right" Height="50" Width="100" Content="Добавить" Background="Aquamarine" Click="Button_Click"/>
+
+
+        <Button x:Name="BtnAddProduct" 
+                Content="Добавить"
+                Grid.Row="3"
+                Width="70"
+                Height="30"
+                HorizontalAlignment="Right"
+                Margin="0 0 30 0"
+                Click="BtnAddProduct_Click"/>
     </Grid>
 </Window>

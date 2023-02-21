@@ -23,7 +23,8 @@
                     BorderThickness="1"
                     Width="200"
                     Height="200">
-                <Image x:Name="ImgProduct" Source="/Res/NN.png"/>
+                <Image x:Name="ImgProduct"
+                       Source="/Res/NN.png"/>
             </Border>
 
             <Button x:Name="BtnChooseImage" 
@@ -50,26 +51,12 @@
                 FontSize="20"
                 TextAlignment="Left"
                 Foreground="Gray"
-                Text="Введите скидку товара"
+                Text="Введите описание товара"
                 Margin="0 20 0 0"
                 />
 
             <TextBox
                 x:Name="TbDisc"
-                Height="50"
-                FontSize="20"
-                Foreground="Black"/>
-            <TextBlock
-                Height="50"
-                FontSize="20"
-                TextAlignment="Left"
-                Foreground="Gray"
-                Text="Введите Цену товара"
-                Margin="0 20 0 0"
-                />
-
-            <TextBox
-                x:Name="TbCost"
                 Height="50"
                 FontSize="20"
                 Foreground="Black"/>
@@ -80,25 +67,23 @@
                        TextAlignment="Left"
                        Foreground="Gray"
                        Margin="0 20 0 0 "/>
-          
+
             <ComboBox x:Name="CMBTypeProduct"
                      Height="50"
                      FontSize="20"                     
                      Foreground="Black"/>
 
 
-            <Button x:Name="BtnAdd"
+            <Button x:Name="BtnAddEdit"
                     Height="50"
                     FontSize="20"
                     Width="200"
                     Margin="0 40 0 0 " 
                     HorizontalAlignment="Center"
                     Content="Добавить"
-                    Click="BtnAdd_Click">
+                    Click="BtnAddEdit_Click">
 
             </Button>
-
-
 
         </StackPanel>
 

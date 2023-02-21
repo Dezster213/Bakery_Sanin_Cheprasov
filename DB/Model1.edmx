@@ -51,14 +51,13 @@
         </EntityType>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="idProd" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Cost" Type="money" Nullable="false" />
-          <Property Name="Discription" Type="nvarchar" MaxLength="250" />
-          <Property Name="IDProdType" Type="int" Nullable="false" />
-          <Property Name="ProductImage" Type="varbinary(max)" />
+          <Property Name="idProd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IdProdType" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="varbinary" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -172,7 +171,7 @@
           <End Role="OrderProd" Type="Self.OrderProd" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="idProd" />
             </Principal>
             <Dependent Role="OrderProd">
               <PropertyRef Name="ProductID" />
@@ -187,7 +186,7 @@
               <PropertyRef Name="IDprodType" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="IDProdType" />
+              <PropertyRef Name="IdProdType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -486,14 +485,13 @@
         </EntityType>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="idProd" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Discription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="IDProdType" Type="Int32" Nullable="false" />
-          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="idProd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdProdType" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="50" FixedLength="false" />
           <NavigationProperty Name="OrderProd" Relationship="BakerySaninCheprasovModel.FK_OrderProd_Product" FromRole="Product" ToRole="OrderProd" />
           <NavigationProperty Name="ProductType" Relationship="BakerySaninCheprasovModel.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
         </EntityType>
@@ -630,7 +628,7 @@
           <End Type="BakerySaninCheprasovModel.OrderProd" Role="OrderProd" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="idProd" />
             </Principal>
             <Dependent Role="OrderProd">
               <PropertyRef Name="ProductID" />
@@ -657,7 +655,7 @@
               <PropertyRef Name="IDprodType" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="IDProdType" />
+              <PropertyRef Name="IdProdType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -767,12 +765,11 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="BakerySaninCheprasovModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
-                <ScalarProperty Name="IDProdType" ColumnName="IDProdType" />
-                <ScalarProperty Name="Discription" ColumnName="Discription" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IdProdType" ColumnName="IdProdType" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="idProd" ColumnName="idProd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

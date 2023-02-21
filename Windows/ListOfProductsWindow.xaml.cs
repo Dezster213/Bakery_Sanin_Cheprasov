@@ -26,12 +26,38 @@ namespace Bakery_Sanin_Cheprasov
         public ListOfProductsWindow()
         {
             InitializeComponent();
+
+            GetListProduct();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GetListProduct()
         {
-            AddProdWindow addProdWindow = new AddProdWindow();
-            addProdWindow.ShowDialog();
+            List<Product> products = new List<Product>();
+            products = Context.Product.ToList();
+
+            // поиск, сортировка, фильтрация
+
+            LvProduct.ItemsSource = products;
+        }
+
+        private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            AddProdWindow addEditProductWindow = new AddProdWindow();
+            addEditProductWindow.ShowDialog();
+        }
+
+        private void BtnEditProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button == null)
+            {
+                return;
+            }
+
+            var product = button.DataContext as Product;
+
+            AddProdWindow editProductWindow = new AddProdWindow(product);
+            editProductWindow.ShowDialog();
         }
     }
 }
