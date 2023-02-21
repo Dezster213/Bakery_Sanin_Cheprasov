@@ -50,22 +50,30 @@ namespace Bakery_Sanin_Cheprasov
             TbNameProduct.Text = product.ProductName.ToString();
             TbDisc.Text = product.Description.ToString();
             CMBTypeProduct.SelectedItem = Context.ProductType.Where(i => i.IDprodType == product.IdProdType).FirstOrDefault();
-
-            using (MemoryStream stream = new MemoryStream(product.Image))
+            if (product.Image != null)
             {
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
-                bitmapImage.StreamSource = stream;
-                bitmapImage.EndInit();
-                ImgProduct.Source = bitmapImage;
+                using (MemoryStream stream = new MemoryStream(product.Image))
+                {
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+                    ImgProduct.Source = bitmapImage;
 
+                }
+                isEdit = true;
+
+                editProduct = product;
+            }
+            else
+            {
+                MessageBox.Show("Ошибка нет изображения");
+                return;
             }
 
-            isEdit = true;
-
-            editProduct = product;
+         
 
         }
 
