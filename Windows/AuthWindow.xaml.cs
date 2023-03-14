@@ -44,6 +44,8 @@ namespace Bakery_Sanin_Cheprasov.Windows
             if(userAuth != null) 
             {
                 MessageBox.Show("ok");
+                ListOfProductsWindow listOfProductsWindow = new ListOfProductsWindow();
+                listOfProductsWindow.Show();
             }
             else
             {

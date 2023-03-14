@@ -136,6 +136,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ClassHelper\CartProductClass.cs" />
     <Compile Include="Windows\AddProdWindow.xaml.cs">
       <DependentUpon>AddProdWindow.xaml</DependentUpon>
     </Compile>

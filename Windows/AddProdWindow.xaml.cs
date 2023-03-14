@@ -16,6 +16,9 @@ using Bakery_Sanin_Cheprasov.Windows;
 using static Bakery_Sanin_Cheprasov.ClassHelper.EFClass;
 using Microsoft.Win32;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Security;
+using System.ComponentModel;
 
 namespace Bakery_Sanin_Cheprasov
 {
@@ -37,19 +40,25 @@ namespace Bakery_Sanin_Cheprasov
             CMBTypeProduct.ItemsSource = Context.ProductType.ToList();
             CMBTypeProduct.SelectedIndex = 0;
             CMBTypeProduct.DisplayMemberPath = "TypeName";
+            tb1.Text = "Добавление товара";
+            BtnAddEdit.Content = "Добавить";
         }
 
         public AddProdWindow(Product product)
         {
             InitializeComponent();
 
+            editProduct = product;
+
             CMBTypeProduct.ItemsSource = Context.ProductType.ToList();
             CMBTypeProduct.SelectedIndex = 0;
             CMBTypeProduct.DisplayMemberPath = "TypeName";
 
-            TbNameProduct.Text = product.ProductName.ToString();
+            TbNameProduct.Text = product.Title.ToString();
             TbDisc.Text = product.Description.ToString();
-            CMBTypeProduct.SelectedItem = Context.ProductType.Where(i => i.IDprodType == product.IdProdType).FirstOrDefault();
+            TbCost.Text = product.Cost.ToString();
+            check.IsChecked = product.Active;
+            CMBTypeProduct.SelectedItem = Context.ProductType.Where(i => i.IDprodType == product.ProductTypeid).FirstOrDefault();
             if (product.Image != null)
             {
                 using (MemoryStream stream = new MemoryStream(product.Image))
@@ -63,18 +72,8 @@ namespace Bakery_Sanin_Cheprasov
                     ImgProduct.Source = bitmapImage;
 
                 }
-                isEdit = true;
-
-                editProduct = product;
             }
-            else
-            {
-                MessageBox.Show("Ошибка нет изображения");
-                return;
-            }
-
-         
-
+            isEdit = true;
         }
 
         private void BtnAddEdit_Click(object sender, RoutedEventArgs e)
@@ -86,9 +85,12 @@ namespace Bakery_Sanin_Cheprasov
             {
                 //изменение товара
 
-                editProduct.ProductName = TbNameProduct.Text;
+
+                editProduct.Title = TbNameProduct.Text;
                 editProduct.Description = TbDisc.Text;
-                editProduct.IdProdType = (CMBTypeProduct.SelectedItem as ProductType).IDprodType;
+                editProduct.Cost = Convert.ToDecimal(TbCost.Text);
+                editProduct.ProductTypeid = (CMBTypeProduct.SelectedItem as ProductType).IDprodType;
+                editProduct.Active = (bool)check.IsChecked;
                 if (pathPhoto != null)
                 {
                     editProduct.Image = File.ReadAllBytes(pathPhoto);
@@ -98,11 +100,12 @@ namespace Bakery_Sanin_Cheprasov
             }
             else
             {
-                //добавление товара
                 Product product = new Product();
-                product.ProductName = TbNameProduct.Text;
+                product.Title = TbNameProduct.Text;
                 product.Description = TbDisc.Text;
-                product.IdProdType = (CMBTypeProduct.SelectedItem as ProductType).IDprodType;
+                product.Cost = Convert.ToDecimal(TbCost.Text);
+                product.ProductTypeid = (CMBTypeProduct.SelectedItem as ProductType).IDprodType;
+                product.Active = (bool)check.IsChecked;
                 if (pathPhoto != null)
                 {
                     product.Image = File.ReadAllBytes(pathPhoto);
@@ -113,6 +116,7 @@ namespace Bakery_Sanin_Cheprasov
                 Context.SaveChanges();
                 MessageBox.Show("OK");
             }
+            ListOfProductsWindow productlistWindow = new ListOfProductsWindow();
 
             this.Close();
 
@@ -126,6 +130,7 @@ namespace Bakery_Sanin_Cheprasov
                 ImgProduct.Source = new BitmapImage(new Uri(openFileDialog.FileName));
                 pathPhoto = openFileDialog.FileName;
             }
+           
         }
     }
 }

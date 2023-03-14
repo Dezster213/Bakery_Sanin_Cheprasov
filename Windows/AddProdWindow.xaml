@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bakery_Sanin_Cheprasov"
         mc:Ignorable="d"
-        Title="AddProdWindow" Height="900" Width="450">
+        Title="AddProdWindow" Height="1000" Width="450">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Res/Osnova.png"/>
         </Grid.Background>
         <StackPanel Orientation="Vertical" 
-                    Margin="40 0 40 0 " >
+                    Margin="40 0 40 0 " Background="{x:Null}">
 
 
-            <TextBlock Text="Добавление товара" 
+            <TextBlock x:Name="tb1"
+                Text="Изменение товара" 
                        FontSize="40" 
                        TextAlignment="Center" 
                        Foreground="Black"/>
@@ -23,8 +24,7 @@
                     BorderThickness="1"
                     Width="200"
                     Height="200">
-                <Image x:Name="ImgProduct"
-                       Source="/Res/NN.png"/>
+                <Image x:Name="ImgProduct"/>
             </Border>
 
             <Button x:Name="BtnChooseImage" 
@@ -32,25 +32,26 @@
                     Width="200"
                     Height="40"
                     Margin="5"
-                    Click="BtnChooseImage_Click"/>
+                    Click="BtnChooseImage_Click"
+                    Foreground="Black" Background="Orange" BorderBrush="Red"/>
 
             <TextBlock Height="50"
                        Text="Введите название товара"
                        FontSize="20"
                        TextAlignment="Left"
-                       Foreground="Gray"
+                       Foreground="Black"
                        Margin="0 20 0 0 "/>
 
             <TextBox x:Name="TbNameProduct"
                      Height="50"
                      FontSize="20"
                      TextAlignment="Left"
-                     Foreground="Black"/>
+                      Foreground="Black" Background="Orange" BorderBrush="Red"/>
             <TextBlock
                 Height="50"
                 FontSize="20"
                 TextAlignment="Left"
-                Foreground="Gray"
+                Foreground="Black"
                 Text="Введите описание товара"
                 Margin="0 20 0 0"
                 />
@@ -59,19 +60,45 @@
                 x:Name="TbDisc"
                 Height="50"
                 FontSize="20"
-                Foreground="Black"/>
-
+                Foreground="Black" Background="Orange" BorderBrush="Red"/>
+            <TextBlock
+                Height="50"
+                FontSize="20"
+                TextAlignment="Left"
+                Foreground="Black"
+                Text="Введите цену товара"
+                Margin="0 20 0 0"
+                />
+            <TextBox x:Name="TbCost"
+                     Height="50"
+                     FontSize="20"
+                     TextAlignment="Left"
+                      Foreground="Black" Background="Orange" BorderBrush="Red"/>
             <TextBlock Height="50"
                        Text="Выберите тип товара"
                        FontSize="20"
                        TextAlignment="Left"
-                       Foreground="Gray"
+                       Foreground="Black"
                        Margin="0 20 0 0 "/>
 
             <ComboBox x:Name="CMBTypeProduct"
                      Height="50"
                      FontSize="20"                     
-                     Foreground="Black"/>
+                     Foreground="Black" Background="Orange" BorderBrush="Red"/>
+            <WrapPanel>
+                <TextBlock Height="50"
+                       Text="В продаже"
+                       FontSize="20"
+                       TextAlignment="Left"
+                       Foreground="Black"
+                       Margin="0 20 0 0 "/>
+                <CheckBox Width="20" Height="15" HorizontalAlignment="Right" x:Name="check">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+            </WrapPanel>
+
 
 
             <Button x:Name="BtnAddEdit"
@@ -80,10 +107,12 @@
                     Width="200"
                     Margin="0 40 0 0 " 
                     HorizontalAlignment="Center"
-                    Content="Добавить"
-                    Click="BtnAddEdit_Click">
+                    Content="Изменение"
+                    Click="BtnAddEdit_Click"
+                    Foreground="Black" Background="Orange" BorderBrush="Red">
 
             </Button>
+
 
         </StackPanel>
 

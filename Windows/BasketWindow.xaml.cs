@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Bakery_Sanin_Cheprasov.ClassHelper;
+using Bakery_Sanin_Cheprasov.DB;
+using Bakery_Sanin_Cheprasov.Windows;
+using static Bakery_Sanin_Cheprasov.ClassHelper.EFClass;
 
 namespace Bakery_Sanin_Cheprasov
 {
@@ -22,6 +26,38 @@ namespace Bakery_Sanin_Cheprasov
         public BasketWindow()
         {
             InitializeComponent();
+            LvProduct.ItemsSource = CartProductClass.products;
+        }
+
+        private void BtnDelProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if(button == null)
+            {
+                return;
+            }
+            var product = (Product)button.DataContext;
+            if(product != null)
+            {
+                CartProductClass.products.Remove(product);
+                LvProduct.ItemsSource = CartProductClass.products;
+                BasketWindow basketWindow = new BasketWindow();
+                this.Hide();
+                basketWindow.ShowDialog();
+                this.Show();
+                this.Close();
+                
+            }
+        }
+
+        private void BtnBuyProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
