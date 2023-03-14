@@ -41,11 +41,7 @@ namespace Bakery_Sanin_Cheprasov
             {
                 CartProductClass.products.Remove(product);
                 LvProduct.ItemsSource = CartProductClass.products;
-                BasketWindow basketWindow = new BasketWindow();
-                this.Hide();
-                basketWindow.ShowDialog();
-                this.Show();
-                this.Close();
+                LvProduct.Items.Refresh();
                 
             }
         }
